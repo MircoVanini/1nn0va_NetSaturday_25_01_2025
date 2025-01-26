@@ -1,0 +1,76 @@
+﻿@page "/"
+
+<PageTitle>Native Scene Automation</PageTitle>
+
+<h1>Native Scene Automation</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Sunset</h5>
+        <EditForm Model="Sunset" OnValidSubmit="HandleStartSunset">
+            <DataAnnotationsValidator />
+
+            <div class="form-floating mb-3">
+                <InputNumber @bind-Value="Sunset.DurationInSec" class="form-control" id="sunset-duration" />
+                <label for="sunset-duration">Duration [seconds]</label>
+            </div>
+
+            <hr />
+            <button type="submit" class="btn btn-primary">Start</button>
+        </EditForm>
+    </div>
+</div>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <h5 class="card-title">Sunrise</h5>
+        <EditForm Model="Sunrise" OnValidSubmit="HandleStartSunrise">
+            <DataAnnotationsValidator />
+
+            <div class="form-floating mb-3">
+                <InputNumber @bind-Value="Sunrise.DurationInSec" class="form-control" id="sunrise-duration" />
+                <label for="sunrise-duration">Duration [seconds]</label>
+            </div>
+
+            <hr />
+            <button type="submit" class="btn btn-primary">Start</button>
+        </EditForm>
+    </div>
+</div>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <h5 class="card-title">Automatic Execution</h5>
+        <EditForm Model="AutomaticExecution" OnValidSubmit="HandleStartAuthomaticExeution">
+            <DataAnnotationsValidator />
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <InputNumber @bind-Value="AutomaticExecution.SunsetDurationInSec" class="form-control" id="auto-sunset-duration" />
+                        <label for="auto-sunset-duration">Sunset Duration [seconds]</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <InputNumber @bind-Value="AutomaticExecution.SunriseDurationInSec" class="form-control" id="auto-sunrise-duration" />
+                        <label for="auto-sunrise-duration">Sunrise Duration [seconds]</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <InputNumber @bind-Value="AutomaticExecution.DayDurationInSec" class="form-control" id="auto-day-duration" />
+                        <label for="auto-day-duration">Day Duration [seconds]</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <InputNumber @bind-Value="AutomaticExecution.NightDurationInSec" class="form-control" id="auto-night-duration" />
+                        <label for="auto-night-duration">Night Duration [seconds]</label>
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+            <button type="submit" class="btn btn-primary">Start</button>
+        </EditForm>
+    </div>
+</div>

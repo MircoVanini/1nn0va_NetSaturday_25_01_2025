@@ -1,0 +1,56 @@
+{
+    "Serilog":
+    {
+        "MinimumLevel":
+        {
+            "Default": "Debug",
+            "Override":
+            {
+                "Microsoft": "Information",
+                "Microsoft.Hosting.Lifetime": "Information"
+            }
+        },
+        "Using":
+        [
+            "Serilog.Sinks.Console",
+            "Serilog.Sinks.Async",
+            "Serilog.Sinks.File"
+        ],
+        "WriteTo":
+        [
+            {
+                "Name": "Console",
+                "Args":
+                {
+                    "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff} | {Level:u3} | {Message:lj} | {SourceContext}{NewLine}{Exception}"
+                }
+            },
+            {
+                "Name": "Async",
+                "Args":
+                {
+                    "configure":
+                    [
+                        {
+                            "Name": "File",
+                            "Args":
+                            {
+                                "restrictedToMinimumLevel": "Information",
+                                "path": "logs/NativeSceneAutomation-.txt",
+                                "rollingInterval": "Day",
+                                "fileSizeLimitBytes": 102400000,
+                                "rollOnFileSizeLimit": true,
+                                "retainedFileCountLimit": 30,
+                                "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff} | {Level:u3} | {Message:lj} | {SourceContext}{NewLine}{Exception}"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "Properties":
+        {
+            "ApplicationName": "Native Scene Automatcion Demo"
+        }
+    }
+}
